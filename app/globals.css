@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Estúdio Monteiro — Design tokens
+   Source of truth: /docs/ai/DESIGN_SYSTEM.md
+   Near-monochrome, editorial, architectural. Lines = structure.
+   ============================================================ */
+@theme {
+  /* Color — paper & ink, color comes from photography */
+  --color-paper: #f3f1ec;
+  --color-paper-deep: #eceae3;
+  --color-ink: #1a1714;
+  --color-graphite: #6c685f;
+  --color-stone: #9a8c76;
+  --color-line: color-mix(in oklab, var(--color-ink) 14%, transparent);
+  --color-line-strong: color-mix(in oklab, var(--color-ink) 28%, transparent);
+
+  /* Typography — display serif + grotesque text (wired in layout.tsx) */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+
+  /* Editorial type scale */
+  --text-display: clamp(2.75rem, 1.2rem + 6.4vw, 7.5rem);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.02em;
+
+  /* Layout */
+  --hairline: 1px;
+  --container-max: 90rem; /* 1440px */
+  --gutter: clamp(1.25rem, 0.5rem + 3vw, 4.5rem);
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-feature-settings: "ss01", "cv01";
+    /* subtle paper grain via layered gradients, performance-safe */
+    background-image: radial-gradient(
+      120% 120% at 50% 0%,
+      color-mix(in oklab, var(--color-paper) 92%, white) 0%,
+      var(--color-paper) 60%
+    );
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 380;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  /* Tabular figures for technical sheets */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Respect reduced motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* The hairline — structural 1px line, never decoration */
+  .hairline {
+    border: 0;
+    border-top: var(--hairline) solid var(--color-line);
+  }
+
+  /* Eyebrow label — small, tracked, grotesque */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-graphite);
+  }
+
+  /* Animated hairline underline for links */
+  .link-underline {
+    background-image: linear-gradient(var(--color-ink), var(--color-ink));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% var(--hairline);
+    transition: background-size 0.5s var(--ease-editorial);
+  }
+  .link-underline:hover {
+    background-size: 100% var(--hairline);
+  }
+}
