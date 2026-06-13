@@ -29,6 +29,11 @@
   --container-max: 90rem; /* 1440px */
   --gutter: clamp(1.25rem, 0.5rem + 3vw, 4.5rem);
 
+  /* Persistent grid — single source of truth for the global vertical field */
+  --grid-max: 90rem; /* == --container-max */
+  --grid-cols: 4; /* mobile default; stepped up in @layer base */
+  --cell-pad: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+
   /* Motion */
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -36,6 +41,18 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* derived column width of the global grid band */
+    --col: calc(min(100vw, var(--grid-max)) / var(--grid-cols));
+  }
+  @media (min-width: 768px) {
+    :root {
+      --grid-cols: 6;
+    }
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --grid-cols: 8;
+    }
   }
 
   html {
