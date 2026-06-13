@@ -18,15 +18,18 @@ export function MaskReveal({
 }) {
   const reduce = useReducedMotion();
 
-  if (reduce) return <div className={className}>{children}</div>;
-
+  // `initial` is constant (never branches on useReducedMotion, which is null on
+  // the server and would otherwise cause a hydration mismatch). Reduced motion
+  // collapses the wipe to an instant reveal instead.
   return (
     <motion.div
       className={cn("overflow-hidden", className)}
       initial={{ clipPath: "inset(100% 0 0 0)" }}
       whileInView={{ clipPath: "inset(0% 0 0 0)" }}
       viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={
+        reduce ? { duration: 0 } : { duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }
+      }
     >
       {children}
     </motion.div>

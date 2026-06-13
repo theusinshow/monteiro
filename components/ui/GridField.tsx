@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { cn } from "@/lib/cn";
 
 /**
  * The persistent global grid: a fixed, full-height centered band of vertical
@@ -11,13 +11,13 @@ import { motion, useReducedMotion } from "motion/react";
  * the gutters read as the clean outer margins. The vertical field is the ONLY
  * persistent structure — horizontals come from element edges (see Rule).
  *
- * On first load the field fades in once ("the drawing appears"). Server and
- * first client render agree on opacity:0 (no hydration mismatch), then the
- * mount effect plays the fade; reduced motion → instant. Structure, never
- * decoration: aria-hidden, pointer-events none, behind content.
+ * On first load the field fades in once ("the drawing appears"), via a CSS
+ * opacity transition toggled after mount — server and first client render agree
+ * on the hidden state (no hydration mismatch), and `motion-reduce` collapses the
+ * transition to instant. Structure, never decoration: aria-hidden,
+ * pointer-events none, behind content.
  */
 export function GridField() {
-  const reduce = useReducedMotion();
   const [shown, setShown] = useState(false);
 
   useEffect(() => setShown(true), []);
@@ -27,11 +27,12 @@ export function GridField() {
       aria-hidden
       className="pointer-events-none fixed inset-0 z-0 flex justify-center"
     >
-      <motion.div
-        className="relative h-full w-full max-w-(--grid-max) px-(--gutter)"
-        initial={false}
-        animate={{ opacity: shown || reduce ? 1 : 0 }}
-        transition={{ duration: reduce ? 0 : 1.2, ease: [0.16, 1, 0.3, 1] }}
+      <div
+        className={cn(
+          "relative h-full w-full max-w-(--grid-max) px-(--gutter)",
+          "transition-opacity duration-1200 ease-out motion-reduce:transition-none",
+          shown ? "opacity-100" : "opacity-0",
+        )}
       >
         <div
           className="relative h-full w-full"
@@ -43,7 +44,7 @@ export function GridField() {
           {/* explicit right edge (the repeat's final line lands just outside) */}
           <span className="absolute inset-y-0 right-0 w-px bg-line" />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

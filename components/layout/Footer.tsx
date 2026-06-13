@@ -11,8 +11,8 @@ export function Footer() {
   return (
     <footer className="relative z-10 mt-32 bg-paper">
       <Rule marks />
-      <Container className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 md:grid-cols-8 md:py-20">
-        <div className="col-span-2 md:col-span-4">
+      <Container className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 md:grid-cols-6 md:py-20 lg:grid-cols-8">
+        <div className="col-span-2 md:col-span-6 lg:col-span-4">
           <p className="font-display text-3xl leading-none md:text-4xl">
             {site.name}
             <span className="text-stone">.</span>
@@ -22,7 +22,10 @@ export function Footer() {
           </p>
         </div>
 
-        <nav className="md:col-span-2 md:col-start-5" aria-label="Rodapé">
+        <nav
+          className="col-span-2 md:col-span-3 lg:col-span-2 lg:col-start-5"
+          aria-label="Rodapé"
+        >
           <p className="label mb-4">Navegação</p>
           <ul className="space-y-2">
             {nav.map((item) => (
@@ -38,9 +41,9 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div className="md:col-span-2 md:col-start-7">
+        <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:col-start-7">
           <p className="label mb-4">Contato</p>
-          <ul className="space-y-2 text-sm text-ink">
+          <ul className="space-y-2 wrap-break-word text-sm text-ink">
             <li>
               <a href={site.whatsappUrl} className="link-underline">
                 WhatsApp

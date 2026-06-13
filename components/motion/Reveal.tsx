@@ -17,13 +17,16 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 /** Quiet fade-up on enter. Falls back to a plain fade when motion is reduced. */
 export function Reveal({ children, className, delay = 0, y = 22 }: RevealProps) {
   const reduce = useReducedMotion();
+  // `initial` is constant (never branches on useReducedMotion, which is null on
+  // the server and would otherwise cause a hydration mismatch). Reduced motion
+  // collapses the fade-up to an instant reveal instead.
   return (
     <motion.div
       className={cn(className)}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
+      initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-12% 0px" }}
-      transition={{ duration: 0.9, delay, ease: EASE }}
+      transition={reduce ? { duration: 0 } : { duration: 0.9, delay, ease: EASE }}
     >
       {children}
     </motion.div>
