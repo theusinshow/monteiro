@@ -117,14 +117,32 @@
     border-top: var(--hairline) solid var(--color-line);
   }
 
-  /* Eyebrow label — small, tracked, grotesque */
+  /* Knockout — body copy and labels sit on paper so the persistent vertical
+     grid lines stop behind small text instead of crossing it. Display headings
+     are intentionally left to span the grid. box-decoration-break clones the
+     paper per line-box (inline text); the inline padding + negative margin keep
+     the text's layout position unchanged. */
+  .knockout {
+    background-color: var(--color-paper);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-inline: 0.3em;
+    margin-inline: -0.3em;
+  }
+
+  /* Eyebrow label — small, tracked, grotesque. inline-block + paper knockout so
+     the grid lines never cross label text. */
   .label {
+    display: inline-block;
     font-family: var(--font-sans);
     font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-graphite);
+    background-color: var(--color-paper);
+    padding-inline: 0.3em;
+    margin-inline: -0.3em;
   }
 
   /* Animated hairline underline for links */

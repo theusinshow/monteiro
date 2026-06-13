@@ -83,7 +83,9 @@ export default async function ProjetoPage({ params }: Params) {
                 <span className="text-ink">{pad(i + 1)} /</span>
                 <span className="ml-2">{label}</span>
               </p>
-              <p className="tabular mt-3 text-lg text-ink">{value}</p>
+              <p className="tabular knockout mt-3 w-fit text-lg text-ink">
+                {value}
+              </p>
             </div>
           ))}
         </div>
@@ -92,7 +94,7 @@ export default async function ProjetoPage({ params }: Params) {
       {/* Summary */}
       <Rule />
       <Container className="py-12 md:py-16">
-        <p className="max-w-2xl text-xl leading-relaxed text-ink">
+        <p className="knockout w-fit max-w-2xl text-xl leading-relaxed text-ink">
           {project.summary}
         </p>
       </Container>

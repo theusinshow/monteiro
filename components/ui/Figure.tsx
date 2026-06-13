@@ -52,7 +52,7 @@ export function Figure({
             role="img"
             className="absolute inset-0 grid place-items-center"
           >
-            <span className="label">{placeholderLabel}</span>
+            <span className="label bg-transparent">{placeholderLabel}</span>
             {/* faint diagonal construction line, architectural cue */}
             <span
               aria-hidden

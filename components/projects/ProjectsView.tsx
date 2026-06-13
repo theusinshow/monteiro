@@ -58,10 +58,12 @@ export function ProjectsView({ projects }: { projects: Project[] }) {
                   priority={i < 3}
                 />
               </MaskReveal>
-              <h3 className="mt-5 font-display text-xl leading-none">
+              <h3 className="knockout mt-5 w-fit font-display text-xl leading-none">
                 {project.title}
               </h3>
-              <p className="mt-2 text-sm text-graphite">{project.location}</p>
+              <p className="knockout mt-2 w-fit text-sm text-graphite">
+                {project.location}
+              </p>
             </Link>
           ))}
         </div>

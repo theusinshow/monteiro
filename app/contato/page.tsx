@@ -29,14 +29,14 @@ export default function ContatoPage() {
             <h1 className="max-w-[12ch] font-display text-4xl leading-tight md:text-6xl">
               Vamos começar.
             </h1>
-            <p className="mt-6 max-w-sm text-lg text-graphite">
+            <p className="knockout mt-6 w-fit max-w-sm text-lg text-graphite">
               Conte sobre o seu projeto. Respondemos pessoalmente.
             </p>
 
             <dl className="mt-12 space-y-6 text-sm">
               <div>
                 <dt className="label">WhatsApp</dt>
-                <dd className="mt-2">
+                <dd className="knockout mt-2 w-fit">
                   <a href={site.whatsappUrl} className="link-underline text-ink">
                     {site.whatsapp}
                   </a>
@@ -44,7 +44,7 @@ export default function ContatoPage() {
               </div>
               <div>
                 <dt className="label">E-mail</dt>
-                <dd className="mt-2">
+                <dd className="knockout mt-2 w-fit">
                   <a
                     href={`mailto:${site.email}`}
                     className="link-underline text-ink"
@@ -55,7 +55,7 @@ export default function ContatoPage() {
               </div>
               <div>
                 <dt className="label">Base</dt>
-                <dd className="mt-2 text-ink">{site.location}</dd>
+                <dd className="knockout mt-2 w-fit text-ink">{site.location}</dd>
               </div>
             </dl>
           </div>

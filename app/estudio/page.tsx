@@ -38,14 +38,14 @@ export default function EstudioPage() {
               Arquitetura como ato de permanência.
             </h1>
             <div className="mt-10 max-w-xl space-y-6 text-lg text-graphite">
-              <p>
+              <p className="knockout w-fit">
                 O Estúdio Monteiro desenvolve projetos residenciais de alto
                 padrão e ambientes corporativos, com atenção à proporção, à luz
                 e à materialidade.
               </p>
-              <p>
+              <p className="knockout w-fit">
                 Cada projeto nasce de uma escuta cuidadosa e se desenvolve como
-                um sistema coerente — do gesto urbano ao detalhe construtivo.
+                um sistema coerente, do gesto urbano ao detalhe construtivo.
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function EstudioPage() {
                 <span className="text-ink">{n} /</span>
                 <span className="ml-2">{title}</span>
               </p>
-              <p className="mt-3 text-graphite">{desc}</p>
+              <p className="knockout mt-3 w-fit text-graphite">{desc}</p>
             </div>
           ))}
         </div>

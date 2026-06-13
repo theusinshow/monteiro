@@ -45,7 +45,7 @@ export default function HomePage() {
           </div>
           <div className="col-span-4 md:col-span-6 lg:col-span-5 lg:col-start-1">
             <Reveal delay={0.12}>
-              <p className="max-w-md text-lg text-graphite">
+              <p className="knockout w-fit max-w-md text-lg text-graphite">
                 Estúdio Monteiro projeta residências de alto padrão e ambientes
                 corporativos. O desenho como linguagem; a obra como argumento.
               </p>
@@ -77,7 +77,7 @@ export default function HomePage() {
                 <span className="text-ink">{pad(i + 1)} /</span>
                 <span className="ml-2">{label}</span>
               </p>
-              <p className="tabular mt-3 text-lg">{value}</p>
+              <p className="tabular knockout mt-3 w-fit text-lg">{value}</p>
             </div>
           ))}
         </div>
@@ -107,12 +107,14 @@ export default function HomePage() {
                 />
               </MaskReveal>
               <div className="mt-5 flex items-baseline justify-between">
-                <h3 className="font-display text-xl leading-none">
+                <h3 className="knockout font-display text-xl leading-none">
                   {project.title}
                 </h3>
                 <span className="label tabular">{project.year}</span>
               </div>
-              <p className="mt-2 text-sm text-graphite">{project.location}</p>
+              <p className="knockout mt-2 w-fit text-sm text-graphite">
+                {project.location}
+              </p>
             </Link>
           ))}
         </div>

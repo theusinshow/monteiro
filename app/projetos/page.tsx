@@ -31,7 +31,7 @@ export default function ProjetosPage() {
             <h1 className="max-w-[14ch] font-display text-4xl leading-tight md:text-7xl">
               Projetos selecionados
             </h1>
-            <p className="mt-6 max-w-md text-lg text-graphite">
+            <p className="knockout mt-6 w-fit max-w-md text-lg text-graphite">
               Cada obra é um estudo de proporção, luz e permanência.
             </p>
           </div>

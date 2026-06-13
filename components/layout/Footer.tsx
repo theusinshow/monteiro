@@ -17,8 +17,8 @@ export function Footer() {
             {site.name}
             <span className="text-stone">.</span>
           </p>
-          <p className="mt-4 max-w-xs text-sm text-graphite">
-            {site.tagline}. {/* PLACEHOLDER — manifesto (CNT-006) */}
+          <p className="knockout mt-4 w-fit max-w-xs text-sm text-graphite">
+            {site.tagline}.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export function Footer() {
           <p className="label mb-4">Navegação</p>
           <ul className="space-y-2">
             {nav.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="knockout w-fit">
                 <Link
                   href={item.href}
                   className="link-underline text-sm text-ink"
@@ -44,17 +44,17 @@ export function Footer() {
         <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:col-start-7">
           <p className="label mb-4">Contato</p>
           <ul className="space-y-2 wrap-break-word text-sm text-ink">
-            <li>
+            <li className="knockout w-fit">
               <a href={site.whatsappUrl} className="link-underline">
                 WhatsApp
               </a>
             </li>
-            <li>
+            <li className="knockout w-fit">
               <a href={`mailto:${site.email}`} className="link-underline">
                 {site.email}
               </a>
             </li>
-            <li>
+            <li className="knockout w-fit">
               <a href={site.instagram} className="link-underline">
                 Instagram
               </a>
@@ -65,7 +65,7 @@ export function Footer() {
 
       <Rule />
       <Container className="flex flex-col gap-2 py-6 text-xs text-graphite md:flex-row md:items-center md:justify-between">
-        <span>
+        <span className="knockout">
           © {site.fullName}. {site.location}.
         </span>
         <span className="label">Site por Coded by M</span>
