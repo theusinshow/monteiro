@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { CellGroup, Cell } from "@/components/ui/Cell";
+import { Rule } from "@/components/ui/Rule";
 import { Figure } from "@/components/ui/Figure";
 import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/site";
@@ -19,66 +19,80 @@ const approach: [string, string, string][] = [
 
 export default function EstudioPage() {
   return (
-    <Container className="pb-28 pt-10 md:pt-14">
-      {/* Intro + portrait */}
-      <CellGroup cols="md:grid-cols-12">
-        <Cell
-          marks
-          index="00"
-          label="O estúdio"
-          span="md:col-span-7"
-          className="p-8 md:p-14"
-        >
-          <h1 className="max-w-[16ch] font-display text-4xl leading-tight md:text-6xl">
-            Arquitetura como ato de permanência.
-          </h1>
-          <div className="mt-10 max-w-xl space-y-6 text-lg text-graphite">
-            {/* PLACEHOLDER — bio / filosofia (CNT-004) */}
-            <p>
-              O Estúdio Monteiro desenvolve projetos residenciais de alto padrão
-              e ambientes corporativos, com atenção à proporção, à luz e à
-              materialidade.
-            </p>
-            <p>
-              Cada projeto nasce de uma escuta cuidadosa e se desenvolve como um
-              sistema coerente — do gesto urbano ao detalhe construtivo.
-            </p>
-          </div>
-        </Cell>
+    <div className="pb-px">
+      <Rule marks />
+      <Container className="flex items-center justify-between py-3">
+        <span className="label">
+          <span className="text-ink">00 /</span>
+          <span className="ml-2">O estúdio</span>
+        </span>
+        <span className="label">Retrato</span>
+      </Container>
 
-        <Cell label="Retrato" span="md:col-span-5" className="p-0">
-          <Figure
-            src={null}
-            alt="Retrato — Estúdio Monteiro"
-            ratio="3/4"
-            placeholderLabel="Retrato em breve"
-          />
-        </Cell>
-      </CellGroup>
+      {/* Intro + portrait */}
+      <Rule />
+      <Container className="py-12 md:py-16">
+        <div className="grid grid-cols-4 gap-8 md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 md:col-span-6 lg:col-span-5">
+            <h1 className="max-w-[16ch] font-display text-4xl leading-tight md:text-6xl">
+              Arquitetura como ato de permanência.
+            </h1>
+            <div className="mt-10 max-w-xl space-y-6 text-lg text-graphite">
+              <p>
+                O Estúdio Monteiro desenvolve projetos residenciais de alto
+                padrão e ambientes corporativos, com atenção à proporção, à luz
+                e à materialidade.
+              </p>
+              <p>
+                Cada projeto nasce de uma escuta cuidadosa e se desenvolve como
+                um sistema coerente — do gesto urbano ao detalhe construtivo.
+              </p>
+            </div>
+          </div>
+          <div className="col-span-4 md:col-span-6 lg:col-span-3">
+            <Figure
+              src={null}
+              alt="Retrato — Estúdio Monteiro"
+              ratio="3/4"
+              placeholderLabel="Retrato em breve"
+            />
+          </div>
+        </div>
+      </Container>
 
       {/* Approach */}
-      <CellGroup cols="md:grid-cols-3" className="-mt-px">
-        <Cell span="md:col-span-3" label="Abordagem / Como trabalhamos" />
-        {approach.map(([n, title, desc]) => (
-          <Cell key={n} index={n} label={title} className="md:min-h-56">
-            <p className="mt-2 text-graphite">{desc}</p>
-          </Cell>
-        ))}
-      </CellGroup>
+      <Rule marks />
+      <Container className="py-3">
+        <span className="label">Abordagem / Como trabalhamos</span>
+      </Container>
+      <Rule />
+      <Container>
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {approach.map(([n, title, desc]) => (
+            <div key={n} className="px-(--cell-pad) py-8 md:min-h-56">
+              <p className="label">
+                <span className="text-ink">{n} /</span>
+                <span className="ml-2">{title}</span>
+              </p>
+              <p className="mt-3 text-graphite">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
 
       {/* CTA */}
-      <CellGroup className="-mt-px">
-        <Cell marks label="Contato" className="px-6 py-16 text-center md:py-24">
-          <p className="font-display text-3xl md:text-5xl">
-            Vamos conversar sobre o seu projeto.
-          </p>
-          <div className="mt-10 flex justify-center">
-            <ButtonLink href={site.whatsappUrl} variant="solid">
-              Falar no WhatsApp
-            </ButtonLink>
-          </div>
-        </Cell>
-      </CellGroup>
-    </Container>
+      <Rule marks />
+      <Container className="py-16 text-center md:py-24">
+        <p className="font-display text-3xl md:text-5xl">
+          Vamos conversar sobre o seu projeto.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <ButtonLink href={site.whatsappUrl} variant="solid">
+            Falar no WhatsApp
+          </ButtonLink>
+        </div>
+      </Container>
+      <Rule />
+    </div>
   );
 }
