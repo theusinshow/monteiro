@@ -27,7 +27,10 @@ export function Stats({ items, eyebrow }: { items: Stat[]; eyebrow?: string }) {
       <Container>
         <div className="grid grid-cols-2 md:grid-cols-4">
           {items.map((s) => (
-            <div key={s.label} className="px-(--cell-pad) py-10 md:py-14">
+            <div
+              key={s.label}
+              className="bg-paper px-(--cell-pad) py-10 md:border-l md:border-line md:py-14 md:first:border-l-0"
+            >
               <span aria-hidden className="flex gap-1.5">
                 {Array.from({ length: 4 }).map((_, d) => (
                   <span key={d} className="h-[3px] w-[3px] rounded-full bg-stone" />

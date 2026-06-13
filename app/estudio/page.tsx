@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Rule } from "@/components/ui/Rule";
-import { Figure } from "@/components/ui/Figure";
 import { Stats, type Stat } from "@/components/ui/Stats";
 import { ButtonLink } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 
 const numbers: Stat[] = [
@@ -11,6 +11,14 @@ const numbers: Stat[] = [
   { value: "15", label: "Anos", desc: "De estúdio, desde 2009." },
   { value: "2", label: "Frentes", desc: "Residencial e corporativo." },
   { value: "100%", label: "Autoral", desc: "Do gesto urbano ao detalhe." },
+];
+
+const ficha: [string, string][] = [
+  ["Fundado", String(site.foundedYear)],
+  ["Base", site.location],
+  ["Atuação", "Residencial · Corporativo"],
+  ["Linguagem", "Autoral"],
+  ["Foco", "Proporção, luz, matéria"],
 ];
 
 export const metadata: Metadata = {
@@ -34,14 +42,14 @@ export default function EstudioPage() {
           <span className="text-ink">00 /</span>
           <span className="ml-2">O estúdio</span>
         </span>
-        <span className="label">Retrato</span>
+        <span className="label">Ficha</span>
       </Container>
 
-      {/* Intro + portrait */}
+      {/* Intro + studio ficha */}
       <Rule />
-      <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-4 gap-8 md:grid-cols-6 lg:grid-cols-8">
-          <div className="col-span-4 md:col-span-6 lg:col-span-5">
+      <Container>
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 px-(--cell-pad) py-12 md:col-span-6 md:py-16 lg:col-span-5">
             <h1 className="knockout w-fit max-w-[16ch] font-display text-4xl leading-tight md:text-6xl">
               Arquitetura como ato de permanência.
             </h1>
@@ -57,13 +65,21 @@ export default function EstudioPage() {
               </p>
             </div>
           </div>
-          <div className="col-span-4 md:col-span-6 lg:col-span-3">
-            <Figure
-              src={null}
-              alt="Retrato — Estúdio Monteiro"
-              ratio="3/4"
-              placeholderLabel="Retrato em breve"
-            />
+
+          {/* Ficha — facts as a ruled vertical index (replaces the portrait) */}
+          <div className="col-span-4 self-start bg-paper md:col-span-6 lg:col-span-3 lg:border-l lg:border-line">
+            {ficha.map(([label, value], i) => (
+              <div
+                key={label}
+                className={cn(
+                  "flex items-baseline justify-between gap-6 px-(--cell-pad) py-5",
+                  i > 0 && "border-t border-line",
+                )}
+              >
+                <span className="label">{label}</span>
+                <span className="knockout text-right text-ink">{value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
@@ -80,7 +96,10 @@ export default function EstudioPage() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3">
           {approach.map(([n, title, desc]) => (
-            <div key={n} className="px-(--cell-pad) py-8 md:min-h-56">
+            <div
+              key={n}
+              className="bg-paper px-(--cell-pad) py-10 md:min-h-56 md:border-l md:border-line md:first:border-l-0"
+            >
               <p className="label">
                 <span className="text-ink">{n} /</span>
                 <span className="ml-2">{title}</span>
@@ -91,18 +110,23 @@ export default function EstudioPage() {
         </div>
       </Container>
 
-      {/* CTA */}
+      {/* CTA — heading + action in one bounded, aligned band */}
       <Rule marks />
-      <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-4 items-end gap-8 md:grid-cols-6 lg:grid-cols-8">
-          <p className="knockout col-span-4 w-fit font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
-            Vamos conversar sobre o seu projeto.
-          </p>
-          <div className="col-span-4 md:col-span-2 lg:col-span-3">
-            <ButtonLink href={site.whatsappUrl} variant="solid" block>
-              Falar no WhatsApp
-            </ButtonLink>
+      <Container>
+        <div className="grid grid-cols-4 items-stretch md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 flex items-center px-(--cell-pad) py-10 md:col-span-6 lg:col-span-5">
+            <p className="knockout font-display text-3xl leading-tight md:text-5xl">
+              Vamos conversar sobre o seu projeto.
+            </p>
           </div>
+          <ButtonLink
+            href={site.whatsappUrl}
+            variant="solid"
+            block
+            className="col-span-4 h-full md:col-span-6 lg:col-span-3"
+          >
+            Falar no WhatsApp
+          </ButtonLink>
         </div>
       </Container>
       <Rule />
