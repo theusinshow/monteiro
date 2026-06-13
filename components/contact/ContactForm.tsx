@@ -48,7 +48,7 @@ export function ContactForm() {
         placeholder="Conte um pouco sobre o que você imagina."
         required
       />
-      <Button type="submit" variant="solid" disabled={sending}>
+      <Button type="submit" variant="solid" block disabled={sending}>
         Enviar mensagem
       </Button>
     </form>

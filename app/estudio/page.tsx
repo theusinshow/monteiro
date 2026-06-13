@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Rule } from "@/components/ui/Rule";
 import { Figure } from "@/components/ui/Figure";
+import { Stats, type Stat } from "@/components/ui/Stats";
 import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/site";
+
+const numbers: Stat[] = [
+  { value: "40+", label: "Projetos", desc: "Residenciais e corporativos entregues." },
+  { value: "15", label: "Anos", desc: "De estúdio, desde 2009." },
+  { value: "2", label: "Frentes", desc: "Residencial e corporativo." },
+  { value: "100%", label: "Autoral", desc: "Do gesto urbano ao detalhe." },
+];
 
 export const metadata: Metadata = {
   title: "Estúdio",
@@ -60,6 +68,9 @@ export default function EstudioPage() {
         </div>
       </Container>
 
+      {/* Numbers */}
+      <Stats eyebrow="O estúdio em números" items={numbers} />
+
       {/* Approach */}
       <Rule marks />
       <Container className="py-3">
@@ -82,14 +93,16 @@ export default function EstudioPage() {
 
       {/* CTA */}
       <Rule marks />
-      <Container className="py-16 text-center md:py-24">
-        <p className="font-display text-3xl md:text-5xl">
-          Vamos conversar sobre o seu projeto.
-        </p>
-        <div className="mt-10 flex justify-center">
-          <ButtonLink href={site.whatsappUrl} variant="solid">
-            Falar no WhatsApp
-          </ButtonLink>
+      <Container className="py-12 md:py-16">
+        <div className="grid grid-cols-4 items-end gap-8 md:grid-cols-6 lg:grid-cols-8">
+          <p className="col-span-4 font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
+            Vamos conversar sobre o seu projeto.
+          </p>
+          <div className="col-span-4 md:col-span-2 lg:col-span-3">
+            <ButtonLink href={site.whatsappUrl} variant="solid" block>
+              Falar no WhatsApp
+            </ButtonLink>
+          </div>
         </div>
       </Container>
       <Rule />

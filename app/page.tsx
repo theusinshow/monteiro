@@ -118,10 +118,12 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-        <div className="mt-12">
-          <ButtonLink href="/projetos" variant="ghost">
-            Ver todos os projetos →
-          </ButtonLink>
+        <div className="mt-12 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 md:col-span-3 lg:col-span-3">
+            <ButtonLink href="/projetos" variant="line" block>
+              Ver todos os projetos
+            </ButtonLink>
+          </div>
         </div>
       </Container>
 
@@ -138,13 +140,15 @@ export default function HomePage() {
       {/* Contact */}
       <Rule marks />
       <Container className="py-12 md:py-16">
-        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-          <h2 className="max-w-[16ch] font-display text-3xl leading-tight md:text-5xl">
+        <div className="grid grid-cols-4 items-end gap-8 md:grid-cols-6 lg:grid-cols-8">
+          <h2 className="col-span-4 max-w-[16ch] font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
             Vamos conversar sobre o seu projeto.
           </h2>
-          <ButtonLink href="/contato" variant="solid">
-            Iniciar conversa
-          </ButtonLink>
+          <div className="col-span-4 md:col-span-2 lg:col-span-3">
+            <ButtonLink href="/contato" variant="solid" block>
+              Iniciar conversa
+            </ButtonLink>
+          </div>
         </div>
       </Container>
       <Rule />
