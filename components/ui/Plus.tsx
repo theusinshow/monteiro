@@ -76,12 +76,8 @@ const PCTS = {
  */
 export function MarksAtColumns() {
   return (
-    <span
-      aria-hidden
-      className="pointer-events-none absolute inset-0 mx-auto block"
-      style={{ maxWidth: "var(--grid-max)" }}
-    >
-      <span className="absolute inset-0 lg:hidden md:hidden">
+    <span aria-hidden className="pointer-events-none absolute inset-0">
+      <span className="absolute inset-0 md:hidden">
         {PCTS.sm.map((p) => (
           <ColMark key={p} left={p} />
         ))}

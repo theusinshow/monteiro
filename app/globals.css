@@ -41,8 +41,11 @@
 @layer base {
   :root {
     color-scheme: light;
-    /* derived column width of the global grid band */
-    --col: calc(min(100vw, var(--grid-max)) / var(--grid-cols));
+    /* width of one column of the content band (band minus the two gutters).
+       The gutters become the clean outer margins around the grid. */
+    --col: calc(
+      (min(100vw, var(--grid-max)) - 2 * var(--gutter)) / var(--grid-cols)
+    );
   }
   @media (min-width: 768px) {
     :root {

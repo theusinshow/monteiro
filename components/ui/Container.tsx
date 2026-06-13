@@ -4,27 +4,18 @@ type ContainerProps = {
   as?: "div" | "section" | "header" | "footer" | "main" | "article";
   children: React.ReactNode;
   className?: string;
-  /** Render the structural side hairlines that frame the content column. */
-  framed?: boolean;
 };
 
 /**
- * Content column with the studio's wide outer gutters.
- * `framed` exposes the left/right structural hairlines that read
- * like the margins of an architectural drawing.
+ * Centered content band, aligned to the global GridField. Capped at --grid-max
+ * and inset by --gutter so its edges land on the grid's outer lines; the gutters
+ * are the clean outer margins. The structural side rails now come from GridField.
  */
-export function Container({
-  as: Tag = "div",
-  children,
-  className,
-  framed = false,
-}: ContainerProps) {
+export function Container({ as: Tag = "div", children, className }: ContainerProps) {
   return (
     <Tag
       className={cn(
-        "mx-auto w-full max-w-[var(--container-max)] px-[var(--gutter)]",
-        framed &&
-          "relative before:absolute before:inset-y-0 before:left-[var(--gutter)] before:w-px before:bg-line after:absolute after:inset-y-0 after:right-[var(--gutter)] after:w-px after:bg-line",
+        "mx-auto w-full max-w-(--grid-max) px-(--gutter)",
         className,
       )}
     >
