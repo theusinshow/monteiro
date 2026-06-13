@@ -47,7 +47,7 @@ export default async function ProjetoPage({ params }: Params) {
       <Rule marks />
       <Container className="flex items-center justify-between py-3">
         <span className="label">
-          <span className="text-ink">00 /</span>
+          <span className="text-accent">00 /</span>
           <span className="ml-2">{project.type}</span>
         </span>
         <span className="label tabular">{project.area} m²</span>
@@ -80,7 +80,7 @@ export default async function ProjetoPage({ params }: Params) {
           {sheet.map(([label, value], i) => (
             <div key={label} className="px-(--cell-pad) py-5">
               <p className="label">
-                <span className="text-ink">{pad(i + 1)} /</span>
+                <span className="text-accent">{pad(i + 1)} /</span>
                 <span className="ml-2">{label}</span>
               </p>
               <p className="tabular knockout mt-3 w-fit text-lg text-ink">

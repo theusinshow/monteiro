@@ -17,7 +17,7 @@ export function Header() {
           aria-label={`${site.fullName} — início`}
         >
           {site.name}
-          <span className="text-stone">.</span>
+          <span className="text-accent">.</span>
         </Link>
 
         <nav aria-label="Principal">

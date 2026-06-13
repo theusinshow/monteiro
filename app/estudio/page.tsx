@@ -39,7 +39,7 @@ export default function EstudioPage() {
       <Rule marks />
       <Container className="flex items-center justify-between py-3">
         <span className="label">
-          <span className="text-ink">00 /</span>
+          <span className="text-accent">00 /</span>
           <span className="ml-2">O estúdio</span>
         </span>
         <span className="label">Ficha</span>
@@ -113,7 +113,7 @@ export default function EstudioPage() {
       {/* CTA — heading + action in one bounded, aligned band */}
       <Rule marks />
       <Container>
-        <div className="grid grid-cols-4 items-stretch md:grid-cols-6 lg:grid-cols-8">
+        <div className="grid grid-cols-4 items-center md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 flex items-center px-(--cell-pad) py-10 md:col-span-6 lg:col-span-5">
             <p className="knockout font-display text-3xl leading-tight md:text-5xl">
               Vamos conversar sobre o seu projeto.
@@ -123,7 +123,7 @@ export default function EstudioPage() {
             href={site.whatsappUrl}
             variant="solid"
             block
-            className="col-span-4 h-full md:col-span-6 lg:col-span-3"
+            className="col-span-4 md:col-span-6 lg:col-span-3"
           >
             Falar no WhatsApp
           </ButtonLink>

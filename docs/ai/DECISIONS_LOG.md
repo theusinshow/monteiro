@@ -34,3 +34,8 @@
 **Status:** Approved
 **Decision:** Next.js (App Router) + TypeScript + Tailwind CSS + GSAP/Framer Motion + Lenis; content in MDX/JSON; deploy on Vercel.
 **Impact:** `EXECUTION_PLAN.md`, tooling and dependencies.
+
+## DEC-008 — Secondary accent color (editorial brick)
+**Status:** Approved (developer request)
+**Decision:** Introduce one committed secondary accent — editorial brick red `--color-accent: oklch(0.47 0.155 32)` (≈ `#9f2c19`) — to relieve the near-monochrome palette. Depth tuned to clear WCAG AA 4.5:1 on paper (measured 6.53:1) at label sizes. Used sparingly and semantically only: signature display italic, wordmark mark, index/folio numerals, active filter state, link-hover underline, focus ring, text selection. Refines (does not revoke) DEC-005: hairlines + photography still lead; accent stays well under 10% of surface.
+**Impact:** `DESIGN_SYSTEM.md`, `app/globals.css`.

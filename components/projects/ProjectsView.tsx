@@ -45,7 +45,7 @@ export function ProjectsView({ projects }: { projects: Project[] }) {
             >
               <div className="mb-4 flex items-baseline justify-between">
                 <span className="label">
-                  <span className="text-ink">{pad(i + 1)} /</span>
+                  <span className="text-accent">{pad(i + 1)} /</span>
                   <span className="ml-2">{project.type}</span>
                 </span>
                 <span className="label tabular">{project.year}</span>

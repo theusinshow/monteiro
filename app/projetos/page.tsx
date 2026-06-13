@@ -18,7 +18,7 @@ export default function ProjetosPage() {
       <Rule marks />
       <Container className="flex items-center justify-between py-3">
         <span className="label">
-          <span className="text-ink">00 /</span>
+          <span className="text-accent">00 /</span>
           <span className="ml-2">Portfólio</span>
         </span>
         <span className="label tabular">{pad(projects.length)} projetos</span>

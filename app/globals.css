@@ -15,6 +15,11 @@
   --color-line: color-mix(in oklab, var(--color-ink) 14%, transparent);
   --color-line-strong: color-mix(in oklab, var(--color-ink) 28%, transparent);
 
+  /* Secondary accent — editorial brick. Single committed hue, used sparingly:
+     signature italic, wordmark mark, index folios, active state, interaction.
+     Depth tuned (L .47) to clear AA 4.5:1 on paper even at label sizes. */
+  --color-accent: oklch(0.47 0.155 32);
+
   /* Typography — display serif + grotesque text (wired in layout.tsx) */
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
@@ -79,8 +84,14 @@
   }
 
   ::selection {
-    background: var(--color-ink);
+    background: var(--color-accent);
     color: var(--color-paper);
+  }
+
+  /* Brand-tinted keyboard focus — visible, accessible, never on mouse click */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 
   h1,
@@ -147,7 +158,10 @@
 
   /* Animated hairline underline for links */
   .link-underline {
-    background-image: linear-gradient(var(--color-ink), var(--color-ink));
+    background-image: linear-gradient(
+      var(--color-accent),
+      var(--color-accent)
+    );
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 0% var(--hairline);

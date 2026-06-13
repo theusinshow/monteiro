@@ -11,7 +11,7 @@ type FilterTabsProps<T extends string> = {
 
 /**
  * Editorial filter — text options separated by hairlines, the active one
- * marked by ink and an underline. No pill chrome.
+ * marked by the accent brick and an underline. No pill chrome.
  */
 export function FilterTabs<T extends string>({
   options,
@@ -38,7 +38,7 @@ export function FilterTabs<T extends string>({
             className={cn(
               "knockout pb-1 text-sm transition-colors duration-300 ease-editorial",
               active
-                ? "border-b border-ink text-ink"
+                ? "border-b border-accent text-accent"
                 : "border-b border-transparent text-graphite hover:text-ink",
             )}
           >

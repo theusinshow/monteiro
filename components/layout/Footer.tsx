@@ -15,7 +15,7 @@ export function Footer() {
         <div className="col-span-2 md:col-span-6 lg:col-span-4">
           <p className="font-display text-3xl leading-none md:text-4xl">
             {site.name}
-            <span className="text-stone">.</span>
+            <span className="text-accent">.</span>
           </p>
           <p className="knockout mt-4 w-fit max-w-xs text-sm text-graphite">
             {site.tagline}.

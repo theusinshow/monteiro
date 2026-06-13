@@ -26,7 +26,7 @@ export default function HomePage() {
       <Rule marks />
       <Container className="flex items-center justify-between py-3">
         <span className="label">
-          <span className="text-ink">00 /</span>
+          <span className="text-accent">00 /</span>
           <span className="ml-2">Estúdio Monteiro</span>
         </span>
         <span className="label">{site.location}</span>
@@ -37,7 +37,7 @@ export default function HomePage() {
       <Container className="py-16 md:py-28">
         <Reveal>
           <h1 className="knockout w-fit max-w-[14ch] font-display text-(length:--text-display) leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
-            Espaços que <em className="italic text-stone">permanecem</em>.
+            Espaços que <em className="italic text-accent">permanecem</em>.
           </h1>
         </Reveal>
       </Container>
@@ -45,7 +45,7 @@ export default function HomePage() {
       {/* Intro + CTAs — a bounded band aligned to the meta columns below */}
       <Rule />
       <Container>
-        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+        <div className="grid grid-cols-4 items-center md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 flex items-center px-(--cell-pad) py-8 md:col-span-6 lg:col-span-4">
             <Reveal>
               <p className="knockout max-w-md text-lg text-graphite">
@@ -58,7 +58,7 @@ export default function HomePage() {
             href="/projetos"
             variant="line"
             block
-            className="col-span-2 h-full md:col-span-3 lg:col-span-2"
+            className="col-span-2 md:col-span-3 lg:col-span-2"
           >
             Ver projetos
           </ButtonLink>
@@ -66,7 +66,7 @@ export default function HomePage() {
             href="/contato"
             variant="line"
             block
-            className="col-span-2 h-full md:col-span-3 lg:col-span-2"
+            className="col-span-2 md:col-span-3 lg:col-span-2"
           >
             Contato
           </ButtonLink>
@@ -83,7 +83,7 @@ export default function HomePage() {
               className="col-span-1 px-(--cell-pad) py-6 md:col-span-3 lg:col-span-2"
             >
               <p className="label">
-                <span className="text-ink">{pad(i + 1)} /</span>
+                <span className="text-accent">{pad(i + 1)} /</span>
                 <span className="ml-2">{label}</span>
               </p>
               <p className="tabular knockout mt-3 w-fit text-lg">{value}</p>
@@ -159,7 +159,7 @@ export default function HomePage() {
       {/* Contact — heading + action in one bounded, aligned band */}
       <Rule marks />
       <Container>
-        <div className="grid grid-cols-4 items-stretch md:grid-cols-6 lg:grid-cols-8">
+        <div className="grid grid-cols-4 items-center md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 flex items-center px-(--cell-pad) py-10 md:col-span-6 lg:col-span-5">
             <h2 className="knockout max-w-[16ch] font-display text-3xl leading-tight md:text-5xl">
               Vamos conversar sobre o seu projeto.
@@ -169,7 +169,7 @@ export default function HomePage() {
             href="/contato"
             variant="solid"
             block
-            className="col-span-4 h-full md:col-span-6 lg:col-span-3"
+            className="col-span-4 md:col-span-6 lg:col-span-3"
           >
             Iniciar conversa
           </ButtonLink>

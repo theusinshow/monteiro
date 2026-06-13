@@ -6,13 +6,15 @@
 Minimalist, sophisticated, architectural, editorial, silent, premium — with generous breathing room and zero template feel. **Signature system: an exposed hairline (1px) grid** that behaves like an architectural drawing — it marks margins, exposes columns, sets a baseline rhythm and separates sections. Lines are structure, never ornament. Photography is the protagonist; UI recedes.
 
 ## Color Foundations
-Near-monochrome; color comes from project photography.
-- `--paper` Off-white background — e.g. `#F4F3EF` (placeholder)
-- `--ink` Primary text / lines — e.g. `#1A1A1A` (placeholder)
-- `--graphite` Secondary text — e.g. `#6B6B68` (placeholder)
-- `--hairline` Line color — `--ink` at ~12–18% opacity
-- `--accent-warm` One warm neutral — e.g. `#A89B86` (placeholder, sparingly)
-Tokens are placeholders until brand identity is confirmed. Maintain AA contrast for text.
+Warm near-monochrome; chromatic richness still comes mainly from project photography. One committed secondary accent (editorial brick) relieves the monochrome — used sparingly, never decoratively (see DEC-008).
+- `--color-paper` Off-white background — `#f3f1ec`
+- `--color-paper-deep` Recessed surface — `#eceae3`
+- `--color-ink` Primary text / lines — `#1a1714`
+- `--color-graphite` Secondary text — `#6c685f`
+- `--color-stone` Warm taupe neutral — `#9a8c76` (sparingly)
+- `--color-line` / `--color-line-strong` Hairlines — `--ink` at 14% / 28%
+- `--color-accent` **Secondary — editorial brick** `oklch(0.47 0.155 32)` (≈ `#9f2c19`). AA-safe on paper (6.53:1). Reserved for: signature display italic, wordmark mark, index/folio numerals, active filter state, link-hover underline, focus ring, selection. Keep under ~10% of any view.
+Maintain AA contrast for text; never let the accent compete with photography or the hairline grid.
 
 ## Typography
 - **Display (serif, editorial):** large headings and the studio statement. Candidate vibe: a high-contrast modern serif. (placeholder family)
