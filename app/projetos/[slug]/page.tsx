@@ -54,7 +54,7 @@ export default async function ProjetoPage({ params }: Params) {
       </Container>
       <Rule />
       <Container className="py-12 md:py-16">
-        <h1 className="font-display text-4xl leading-none md:text-7xl">
+        <h1 className="knockout w-fit font-display text-4xl leading-none md:text-7xl">
           {project.title}
         </h1>
       </Container>
@@ -129,7 +129,7 @@ export default async function ProjetoPage({ params }: Params) {
             <span className="label tabular">{next.year}</span>
           </div>
           <div className="flex items-baseline justify-between">
-            <span className="font-display text-3xl md:text-5xl">
+            <span className="knockout font-display text-3xl md:text-5xl">
               {next.title}
             </span>
             <span

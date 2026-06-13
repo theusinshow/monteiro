@@ -26,7 +26,7 @@ export default function ContatoPage() {
       <Container className="py-12 md:py-16">
         <div className="grid grid-cols-4 gap-12 md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 md:col-span-6 lg:col-span-3">
-            <h1 className="max-w-[12ch] font-display text-4xl leading-tight md:text-6xl">
+            <h1 className="knockout w-fit max-w-[12ch] font-display text-4xl leading-tight md:text-6xl">
               Vamos começar.
             </h1>
             <p className="knockout mt-6 w-fit max-w-sm text-lg text-graphite">

@@ -13,7 +13,7 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between md:h-20">
         <Link
           href="/"
-          className="font-display text-xl tracking-tight md:text-2xl"
+          className="knockout font-display text-xl tracking-tight md:text-2xl"
           aria-label={`${site.fullName} — início`}
         >
           {site.name}
@@ -26,7 +26,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="link-underline pb-0.5 text-sm text-graphite transition-colors hover:text-ink"
+                  className="knockout link-underline pb-0.5 text-sm text-graphite transition-colors hover:text-ink"
                 >
                   {item.label}
                 </Link>

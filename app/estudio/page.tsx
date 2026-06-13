@@ -42,7 +42,7 @@ export default function EstudioPage() {
       <Container className="py-12 md:py-16">
         <div className="grid grid-cols-4 gap-8 md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 md:col-span-6 lg:col-span-5">
-            <h1 className="max-w-[16ch] font-display text-4xl leading-tight md:text-6xl">
+            <h1 className="knockout w-fit max-w-[16ch] font-display text-4xl leading-tight md:text-6xl">
               Arquitetura como ato de permanência.
             </h1>
             <div className="mt-10 max-w-xl space-y-6 text-lg text-graphite">
@@ -95,7 +95,7 @@ export default function EstudioPage() {
       <Rule marks />
       <Container className="py-12 md:py-16">
         <div className="grid grid-cols-4 items-end gap-8 md:grid-cols-6 lg:grid-cols-8">
-          <p className="col-span-4 font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
+          <p className="knockout col-span-4 w-fit font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
             Vamos conversar sobre o seu projeto.
           </p>
           <div className="col-span-4 md:col-span-2 lg:col-span-3">

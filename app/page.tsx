@@ -38,7 +38,7 @@ export default function HomePage() {
         <div className="grid grid-cols-4 gap-y-10 md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 md:col-span-6 lg:col-span-6">
             <Reveal>
-              <h1 className="max-w-[14ch] font-display text-(length:--text-display) leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
+              <h1 className="knockout w-fit max-w-[14ch] font-display text-(length:--text-display) leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
                 Espaços que <em className="italic text-stone">permanecem</em>.
               </h1>
             </Reveal>
@@ -131,7 +131,7 @@ export default function HomePage() {
       <Rule marks />
       <Container className="py-24 md:py-32">
         <Reveal>
-          <p className="mx-auto max-w-3xl text-balance text-center font-display text-3xl leading-snug md:text-5xl">
+          <p className="knockout mx-auto w-fit max-w-3xl text-balance text-center font-display text-3xl leading-snug md:text-5xl">
             “Projetar é organizar o silêncio entre as coisas.”
           </p>
         </Reveal>
@@ -141,7 +141,7 @@ export default function HomePage() {
       <Rule marks />
       <Container className="py-12 md:py-16">
         <div className="grid grid-cols-4 items-end gap-8 md:grid-cols-6 lg:grid-cols-8">
-          <h2 className="col-span-4 max-w-[16ch] font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
+          <h2 className="knockout col-span-4 w-fit max-w-[16ch] font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
             Vamos conversar sobre o seu projeto.
           </h2>
           <div className="col-span-4 md:col-span-2 lg:col-span-3">

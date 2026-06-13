@@ -28,7 +28,7 @@ export default function ProjetosPage() {
       <Container className="py-16 md:py-24">
         <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
           <div className="col-span-4 md:col-span-6 lg:col-span-6">
-            <h1 className="max-w-[14ch] font-display text-4xl leading-tight md:text-7xl">
+            <h1 className="knockout w-fit max-w-[14ch] font-display text-4xl leading-tight md:text-7xl">
               Projetos selecionados
             </h1>
             <p className="knockout mt-6 w-fit max-w-md text-lg text-graphite">
