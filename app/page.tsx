@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { GridLines } from "@/components/ui/GridLines";
-import { CellGroup, Cell } from "@/components/ui/Cell";
 import { Figure } from "@/components/ui/Figure";
+import { Rule } from "@/components/ui/Rule";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { MaskReveal } from "@/components/motion/MaskReveal";
@@ -17,31 +16,36 @@ export default function HomePage() {
   const meta: [string, string][] = [
     ["Atuação", "Residencial · Corporativo"],
     ["Base", site.location],
-    ["Projetos", "—"], // PLACEHOLDER (CNT-003)
-    ["Desde", "—"], // PLACEHOLDER (CNT-004)
+    ["Obras", "40+"],
+    ["Desde", String(site.foundedYear)],
   ];
 
   return (
-    <Container className="pb-28 pt-10 md:pt-14">
-      {/* Hero cell */}
-      <CellGroup>
-        <Cell
-          marks
-          index="00"
-          label="Estúdio Monteiro"
-          annotation={`${site.location}`}
-          className="relative overflow-hidden p-8 md:p-16"
-        >
-          <GridLines columns={4} className="opacity-50" />
-          <div className="relative">
+    <div className="pb-px">
+      {/* Eyebrow */}
+      <Rule marks />
+      <Container className="flex items-center justify-between py-3">
+        <span className="label">
+          <span className="text-ink">00 /</span>
+          <span className="ml-2">Estúdio Monteiro</span>
+        </span>
+        <span className="label">{site.location}</span>
+      </Container>
+
+      {/* Hero */}
+      <Rule />
+      <Container className="py-16 md:py-24">
+        <div className="grid grid-cols-4 gap-y-10 md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 md:col-span-6 lg:col-span-6">
             <Reveal>
               <h1 className="max-w-[14ch] font-display text-(length:--text-display) leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
                 Espaços que <em className="italic text-stone">permanecem</em>.
               </h1>
             </Reveal>
+          </div>
+          <div className="col-span-4 md:col-span-6 lg:col-span-5 lg:col-start-1">
             <Reveal delay={0.12}>
-              <p className="mt-8 max-w-md text-lg text-graphite">
-                {/* PLACEHOLDER — manifesto (CNT-006) */}
+              <p className="max-w-md text-lg text-graphite">
                 Estúdio Monteiro projeta residências de alto padrão e ambientes
                 corporativos. O desenho como linguagem; a obra como argumento.
               </p>
@@ -57,81 +61,92 @@ export default function HomePage() {
               </div>
             </Reveal>
           </div>
-        </Cell>
-      </CellGroup>
+        </div>
+      </Container>
 
-      {/* Meta strip */}
-      <CellGroup cols="grid-cols-2 md:grid-cols-4" className="-mt-px">
-        {meta.map(([label, value], i) => (
-          <Cell key={label} index={pad(i + 1)} label={label}>
-            <p className="tabular text-lg">{value}</p>
-          </Cell>
-        ))}
-      </CellGroup>
+      {/* Meta strip — items align to the grid columns */}
+      <Rule marks />
+      <Container>
+        <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8">
+          {meta.map(([label, value], i) => (
+            <div
+              key={label}
+              className="col-span-1 px-(--cell-pad) py-5 md:col-span-3 lg:col-span-2"
+            >
+              <p className="label">
+                <span className="text-ink">{pad(i + 1)} /</span>
+                <span className="ml-2">{label}</span>
+              </p>
+              <p className="tabular mt-3 text-lg">{value}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
 
-      {/* Selected projects matrix */}
-      <CellGroup cols="md:grid-cols-3" className="-mt-px">
-        <Cell
-          span="md:col-span-3"
-          label="Projetos / Selecionados"
-          annotation={`${pad(projects.length)} no total`}
-        />
-        {selected.map((project, i) => (
-          <Cell
-            key={project.slug}
-            index={pad(i + 1)}
-            label={project.type}
-            annotation={String(project.year)}
-          >
-            <Link href={`/projetos/${project.slug}`} className="group block">
+      {/* Selected projects */}
+      <Rule marks />
+      <Container className="flex items-center justify-between py-3">
+        <span className="label">Projetos / Selecionados</span>
+        <span className="label tabular">{pad(projects.length)} no total</span>
+      </Container>
+      <Rule />
+      <Container className="py-12 md:py-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
+          {selected.map((project, i) => (
+            <Link
+              key={project.slug}
+              href={`/projetos/${project.slug}`}
+              className="group block"
+            >
               <MaskReveal>
                 <Figure
                   src={project.cover}
                   alt={`${project.title}, ${project.location}`}
                   ratio="4/5"
                   priority={i < 2}
-                  className="transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
+                  className="transition-transform duration-700 ease-editorial group-hover:scale-[1.01]"
                 />
               </MaskReveal>
-              <h3 className="mt-5 font-display text-xl leading-none">
-                {project.title}
-              </h3>
+              <div className="mt-5 flex items-baseline justify-between">
+                <h3 className="font-display text-xl leading-none">
+                  {project.title}
+                </h3>
+                <span className="label tabular">{project.year}</span>
+              </div>
               <p className="mt-2 text-sm text-graphite">{project.location}</p>
             </Link>
-          </Cell>
-        ))}
-        <Cell span="md:col-span-3">
+          ))}
+        </div>
+        <div className="mt-12">
           <ButtonLink href="/projetos" variant="ghost">
             Ver todos os projetos →
           </ButtonLink>
-        </Cell>
-      </CellGroup>
+        </div>
+      </Container>
 
-      {/* Manifesto cell */}
-      <CellGroup className="-mt-px">
-        <Cell label="Manifesto" className="px-6 py-20 md:py-32">
-          <Reveal>
-            <p className="mx-auto max-w-3xl text-balance text-center font-display text-3xl leading-snug md:text-5xl">
-              {/* PLACEHOLDER — manifesto (CNT-006) */}
-              “Projetar é organizar o silêncio entre as coisas.”
-            </p>
-          </Reveal>
-        </Cell>
-      </CellGroup>
+      {/* Manifesto */}
+      <Rule marks />
+      <Container className="py-24 md:py-32">
+        <Reveal>
+          <p className="mx-auto max-w-3xl text-balance text-center font-display text-3xl leading-snug md:text-5xl">
+            “Projetar é organizar o silêncio entre as coisas.”
+          </p>
+        </Reveal>
+      </Container>
 
-      {/* Contact cell */}
-      <CellGroup className="-mt-px">
-        <Cell marks label="Contato" annotation="↘" className="p-8 md:p-12">
-          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-            <h2 className="max-w-[16ch] font-display text-3xl leading-tight md:text-5xl">
-              Vamos conversar sobre o seu projeto.
-            </h2>
-            <ButtonLink href="/contato" variant="solid">
-              Iniciar conversa
-            </ButtonLink>
-          </div>
-        </Cell>
-      </CellGroup>
-    </Container>
+      {/* Contact */}
+      <Rule marks />
+      <Container className="py-12 md:py-16">
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+          <h2 className="max-w-[16ch] font-display text-3xl leading-tight md:text-5xl">
+            Vamos conversar sobre o seu projeto.
+          </h2>
+          <ButtonLink href="/contato" variant="solid">
+            Iniciar conversa
+          </ButtonLink>
+        </div>
+      </Container>
+      <Rule />
+    </div>
   );
 }
