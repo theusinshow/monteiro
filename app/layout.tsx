@@ -3,7 +3,7 @@ import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { BlueprintFrame } from "@/components/ui/BlueprintFrame";
+import { GridField } from "@/components/ui/GridField";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -45,7 +45,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${fraunces.variable} ${hanken.variable}`}>
       <body>
         <SmoothScroll>
-          <BlueprintFrame />
+          <GridField />
           <Header />
           <main className="relative z-10">{children}</main>
           <Footer />
