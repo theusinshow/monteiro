@@ -29,39 +29,42 @@ export function Figure({
 }: FigureProps) {
   return (
     <figure
-      className={cn(
-        "relative overflow-hidden bg-paper-deep",
-        className,
-      )}
+      className={cn("relative", className)}
       style={{ aspectRatio: ratio }}
     >
-      {src ? (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className="object-cover"
-        />
-      ) : (
-        <div
-          aria-label={alt}
-          role="img"
-          className="absolute inset-0 grid place-items-center"
-        >
-          <span className="label">{placeholderLabel}</span>
-          {/* faint diagonal construction line, architectural cue */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.35]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to top right, transparent calc(50% - 0.5px), var(--color-line) 50%, transparent calc(50% + 0.5px))",
-            }}
-          />
+      {/* paper margin so the grid lines stop at the photo; a hairline traces
+          the image border within that margin */}
+      <div className="absolute inset-0 p-[clamp(6px,0.6vw,12px)]">
+        <div className="relative h-full w-full overflow-hidden border border-line bg-paper-deep">
+          {src ? (
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes={sizes}
+              priority={priority}
+              className="object-cover"
+            />
+          ) : (
+            <div
+              aria-label={alt}
+              role="img"
+              className="absolute inset-0 grid place-items-center"
+            >
+              <span className="label">{placeholderLabel}</span>
+              {/* faint diagonal construction line, architectural cue */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.35]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to top right, transparent calc(50% - 0.5px), var(--color-line) 50%, transparent calc(50% + 0.5px))",
+                }}
+              />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </figure>
   );
 }
