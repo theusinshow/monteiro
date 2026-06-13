@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Rule } from "@/components/ui/Rule";
 import { nav, site } from "@/lib/site";
 
 /**
- * Minimal editorial header. A single hairline divides it from the page;
- * scroll-reactive treatment is layered in Phase 05.
+ * Minimal editorial header. Its baseline is an element Rule on the grid, with
+ * crosshairs at the column intersections; logo and nav align to the band edges.
  */
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-paper/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between md:h-20">
         <Link
           href="/"
@@ -34,6 +35,7 @@ export function Header() {
           </ul>
         </nav>
       </Container>
+      <Rule marks />
     </header>
   );
 }

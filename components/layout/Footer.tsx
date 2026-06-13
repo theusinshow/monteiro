@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Rule } from "@/components/ui/Rule";
 import { nav, site } from "@/lib/site";
 
 /**
- * Footer as an index — a quiet navigation grid framed by hairlines,
- * carrying the persistent, low-pressure contact path.
+ * Footer as an index — a quiet navigation grid on the global columns, its
+ * edges drawn by element Rules; carries the low-pressure contact path.
  */
 export function Footer() {
   return (
-    <footer className="relative z-10 mt-32 border-t border-line bg-paper">
-      <Container className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 md:grid-cols-12 md:py-20">
-        <div className="col-span-2 md:col-span-5">
+    <footer className="relative z-10 mt-32 bg-paper">
+      <Rule marks />
+      <Container className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 md:grid-cols-8 md:py-20">
+        <div className="col-span-2 md:col-span-4">
           <p className="font-display text-3xl leading-none md:text-4xl">
             {site.name}
             <span className="text-stone">.</span>
@@ -20,7 +22,7 @@ export function Footer() {
           </p>
         </div>
 
-        <nav className="md:col-span-3 md:col-start-7" aria-label="Rodapé">
+        <nav className="md:col-span-2 md:col-start-5" aria-label="Rodapé">
           <p className="label mb-4">Navegação</p>
           <ul className="space-y-2">
             {nav.map((item) => (
@@ -36,7 +38,7 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div className="md:col-span-3">
+        <div className="md:col-span-2 md:col-start-7">
           <p className="label mb-4">Contato</p>
           <ul className="space-y-2 text-sm text-ink">
             <li>
@@ -58,7 +60,8 @@ export function Footer() {
         </div>
       </Container>
 
-      <Container className="flex flex-col gap-2 border-t border-line py-6 text-xs text-graphite md:flex-row md:items-center md:justify-between">
+      <Rule />
+      <Container className="flex flex-col gap-2 py-6 text-xs text-graphite md:flex-row md:items-center md:justify-between">
         <span>
           © {site.fullName}. {site.location}.
         </span>
