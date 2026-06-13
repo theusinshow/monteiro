@@ -32,35 +32,44 @@ export default function HomePage() {
         <span className="label">{site.location}</span>
       </Container>
 
-      {/* Hero */}
+      {/* Hero headline */}
       <Rule />
-      <Container className="py-16 md:py-24">
-        <div className="grid grid-cols-4 gap-y-10 md:grid-cols-6 lg:grid-cols-8">
-          <div className="col-span-4 md:col-span-6 lg:col-span-6">
+      <Container className="py-16 md:py-28">
+        <Reveal>
+          <h1 className="knockout w-fit max-w-[14ch] font-display text-(length:--text-display) leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
+            Espaços que <em className="italic text-stone">permanecem</em>.
+          </h1>
+        </Reveal>
+      </Container>
+
+      {/* Intro + CTAs — a bounded band aligned to the meta columns below */}
+      <Rule />
+      <Container>
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 flex items-center px-(--cell-pad) py-8 md:col-span-6 lg:col-span-4">
             <Reveal>
-              <h1 className="knockout w-fit max-w-[14ch] font-display text-(length:--text-display) leading-(--text-display--line-height) tracking-(--text-display--letter-spacing)">
-                Espaços que <em className="italic text-stone">permanecem</em>.
-              </h1>
-            </Reveal>
-          </div>
-          <div className="col-span-4 md:col-span-6 lg:col-span-5 lg:col-start-1">
-            <Reveal delay={0.12}>
-              <p className="knockout w-fit max-w-md text-lg text-graphite">
+              <p className="knockout max-w-md text-lg text-graphite">
                 Estúdio Monteiro projeta residências de alto padrão e ambientes
                 corporativos. O desenho como linguagem; a obra como argumento.
               </p>
             </Reveal>
-            <Reveal delay={0.2}>
-              <div className="mt-10 flex items-center gap-8">
-                <ButtonLink href="/projetos" variant="ghost">
-                  Ver projetos
-                </ButtonLink>
-                <ButtonLink href="/contato" variant="ghost">
-                  Contato
-                </ButtonLink>
-              </div>
-            </Reveal>
           </div>
+          <ButtonLink
+            href="/projetos"
+            variant="line"
+            block
+            className="col-span-2 h-full md:col-span-3 lg:col-span-2"
+          >
+            Ver projetos
+          </ButtonLink>
+          <ButtonLink
+            href="/contato"
+            variant="line"
+            block
+            className="col-span-2 h-full md:col-span-3 lg:col-span-2"
+          >
+            Contato
+          </ButtonLink>
         </div>
       </Container>
 
@@ -71,7 +80,7 @@ export default function HomePage() {
           {meta.map(([label, value], i) => (
             <div
               key={label}
-              className="col-span-1 px-(--cell-pad) py-5 md:col-span-3 lg:col-span-2"
+              className="col-span-1 px-(--cell-pad) py-6 md:col-span-3 lg:col-span-2"
             >
               <p className="label">
                 <span className="text-ink">{pad(i + 1)} /</span>
@@ -91,7 +100,7 @@ export default function HomePage() {
       </Container>
       <Rule />
       <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-6">
           {selected.map((project, i) => (
             <Link
               key={project.slug}
@@ -106,24 +115,34 @@ export default function HomePage() {
                   priority={i < 2}
                 />
               </MaskReveal>
-              <div className="mt-5 flex items-baseline justify-between">
+              {/* hairline delimiting the caption, full card width */}
+              <span className="mt-5 block h-px w-full bg-line transition-colors duration-500 ease-editorial group-hover:bg-ink" />
+              <div className="flex items-baseline justify-between pt-4">
                 <h3 className="knockout font-display text-xl leading-none">
                   {project.title}
                 </h3>
                 <span className="label tabular">{project.year}</span>
               </div>
-              <p className="knockout mt-2 w-fit text-sm text-graphite">
+              <p className="knockout mt-1 w-fit text-sm text-graphite">
                 {project.location}
               </p>
             </Link>
           ))}
         </div>
-        <div className="mt-12 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-          <div className="col-span-4 md:col-span-3 lg:col-span-3">
-            <ButtonLink href="/projetos" variant="line" block>
-              Ver todos os projetos
-            </ButtonLink>
-          </div>
+      </Container>
+
+      {/* All projects CTA — anchored to the grid */}
+      <Rule />
+      <Container>
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <ButtonLink
+            href="/projetos"
+            variant="line"
+            block
+            className="col-span-4 md:col-span-3 lg:col-span-3"
+          >
+            Ver todos os projetos
+          </ButtonLink>
         </div>
       </Container>
 
@@ -137,18 +156,23 @@ export default function HomePage() {
         </Reveal>
       </Container>
 
-      {/* Contact */}
+      {/* Contact — heading + action in one bounded, aligned band */}
       <Rule marks />
-      <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-4 items-end gap-8 md:grid-cols-6 lg:grid-cols-8">
-          <h2 className="knockout col-span-4 w-fit max-w-[16ch] font-display text-3xl leading-tight md:col-span-4 md:text-5xl lg:col-span-5">
-            Vamos conversar sobre o seu projeto.
-          </h2>
-          <div className="col-span-4 md:col-span-2 lg:col-span-3">
-            <ButtonLink href="/contato" variant="solid" block>
-              Iniciar conversa
-            </ButtonLink>
+      <Container>
+        <div className="grid grid-cols-4 items-stretch md:grid-cols-6 lg:grid-cols-8">
+          <div className="col-span-4 flex items-center px-(--cell-pad) py-10 md:col-span-6 lg:col-span-5">
+            <h2 className="knockout max-w-[16ch] font-display text-3xl leading-tight md:text-5xl">
+              Vamos conversar sobre o seu projeto.
+            </h2>
           </div>
+          <ButtonLink
+            href="/contato"
+            variant="solid"
+            block
+            className="col-span-4 h-full md:col-span-6 lg:col-span-3"
+          >
+            Iniciar conversa
+          </ButtonLink>
         </div>
       </Container>
       <Rule />
