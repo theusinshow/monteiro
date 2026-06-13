@@ -2,25 +2,21 @@ import { cn } from "@/lib/cn";
 import { CornerMarks } from "@/components/ui/Plus";
 
 /**
- * CellGroup — a bordered modular matrix. Children are laid out on a grid with
- * 1px hairline gaps (single, never doubled) and an outer hairline frame, like
- * the cells of an architectural drawing.
+ * A run of content blocks laid out on the global column grid. No boxed border /
+ * background — the persistent GridField shows through; structure reads from the
+ * shared columns and from element-bound Rules, not from per-section boxes.
  */
 export function CellGroup({
   children,
   className,
-  cols,
+  cols = "grid-cols-4 md:grid-cols-6 lg:grid-cols-8",
 }: {
   children: React.ReactNode;
   className?: string;
-  /** Tailwind grid-cols utility, e.g. "md:grid-cols-3". */
+  /** Tailwind grid-cols utility; defaults to the global 4/6/8 rhythm. */
   cols?: string;
 }) {
-  return (
-    <div className={cn("border border-line bg-line", className)}>
-      <div className={cn("grid gap-px", cols)}>{children}</div>
-    </div>
-  );
+  return <div className={cn("grid", cols, className)}>{children}</div>;
 }
 
 type CellProps = {
@@ -32,13 +28,16 @@ type CellProps = {
   annotation?: string;
   /** Eyebrow label in the cell header. */
   label?: string;
-  /** Grid span utilities, e.g. "md:col-span-2". */
+  /** Grid span utilities, e.g. "lg:col-span-4". */
   span?: string;
   /** Render crosshair (+) marks at the cell's four corners. */
   marks?: boolean;
 };
 
-/** A single bordered cell. Sits on the CellGroup's hairline grid. */
+/**
+ * A content block placed on the grid. An optional header (index / label /
+ * annotation) sits above a local hairline that spans only the cell.
+ */
 export function Cell({
   children,
   className,
@@ -50,10 +49,10 @@ export function Cell({
 }: CellProps) {
   const hasHeader = index || annotation || label;
   return (
-    <div className={cn("relative bg-paper", span)}>
+    <div className={cn("relative", span)}>
       {marks && <CornerMarks />}
       {hasHeader && (
-        <div className="flex items-center justify-between border-b border-line px-5 py-3 md:px-6">
+        <div className="flex items-center justify-between border-b border-line px-(--cell-pad) py-3">
           <span className="label">
             {index && <span className="text-ink">{index} /</span>}
             {label && <span className={cn(index && "ml-2")}>{label}</span>}
@@ -62,7 +61,7 @@ export function Cell({
         </div>
       )}
       {children && (
-        <div className={cn("p-5 md:p-6", className)}>{children}</div>
+        <div className={cn("p-(--cell-pad)", className)}>{children}</div>
       )}
     </div>
   );
