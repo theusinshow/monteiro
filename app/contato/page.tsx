@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     "Inicie uma conversa com o Estúdio Monteiro sobre o seu projeto.",
 };
 
+const details: [string, string, string?][] = [
+  ["WhatsApp", site.whatsapp, site.whatsappUrl],
+  ["E-mail", site.email, `mailto:${site.email}`],
+  ["Base", site.location],
+];
+
 export default function ContatoPage() {
   return (
     <div className="pb-px">
@@ -23,9 +29,10 @@ export default function ContatoPage() {
       </Container>
 
       <Rule />
-      <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-4 gap-12 md:grid-cols-6 lg:grid-cols-8">
-          <div className="col-span-4 md:col-span-6 lg:col-span-3">
+      <Container>
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          {/* Left: invitation + contact ficha */}
+          <div className="col-span-4 px-(--cell-pad) py-12 md:col-span-6 md:py-16 lg:col-span-3">
             <h1 className="knockout w-fit max-w-[12ch] font-display text-4xl leading-tight md:text-6xl">
               Vamos começar.
             </h1>
@@ -33,34 +40,29 @@ export default function ContatoPage() {
               Conte sobre o seu projeto. Respondemos pessoalmente.
             </p>
 
-            <dl className="mt-12 space-y-6 text-sm">
-              <div>
-                <dt className="label">WhatsApp</dt>
-                <dd className="knockout mt-2 w-fit">
-                  <a href={site.whatsappUrl} className="link-underline text-ink">
-                    {site.whatsapp}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="label">E-mail</dt>
-                <dd className="knockout mt-2 w-fit">
-                  <a
-                    href={`mailto:${site.email}`}
-                    className="link-underline text-ink"
-                  >
-                    {site.email}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="label">Base</dt>
-                <dd className="knockout mt-2 w-fit text-ink">{site.location}</dd>
-              </div>
+            <dl className="mt-12 border-t border-line">
+              {details.map(([label, value, href]) => (
+                <div key={label} className="border-b border-line py-5">
+                  <dt className="label">{label}</dt>
+                  <dd className="mt-2 wrap-break-word">
+                    {href ? (
+                      <a
+                        href={href}
+                        className="knockout link-underline text-ink"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <span className="knockout text-ink">{value}</span>
+                    )}
+                  </dd>
+                </div>
+              ))}
             </dl>
           </div>
 
-          <div className="col-span-4 md:col-span-6 lg:col-span-5">
+          {/* Right: form, divided from the index by a vertical hairline */}
+          <div className="col-span-4 px-(--cell-pad) py-12 md:col-span-6 md:py-16 lg:col-span-5 lg:border-l lg:border-line">
             <ContactForm />
           </div>
         </div>
