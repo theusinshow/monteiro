@@ -1,7 +1,9 @@
 /**
- * Project content source — PLACEHOLDER data (see /docs/ai/CONTENT_PENDING.md, CNT-002/003).
- * Real projects, metadata and photography are pending. Cover/gallery are null
- * until assets arrive; the UI renders a neutral placeholder in the meantime.
+ * Project content source. Photography is licensed stock composed for a
+ * fictitious studio; titles, locations, years, areas and summaries are
+ * editorial placeholders (see /docs/ai/CONTENT_PENDING.md, CNT-002/003).
+ * Assets live in /public/projetos/<slug>/ (capa.webp + 01..04.webp), emitted
+ * by scripts/optimize-images.mjs from /assets/imgs/projetos.
  */
 
 export type ProjectType = "Residencial" | "Corporativo";
@@ -20,51 +22,76 @@ export type Project = {
   gallery: string[];
 };
 
+const gallery = (slug: string) =>
+  ["01", "02", "03", "04"].map((n) => `/projetos/${slug}/${n}.webp`);
+
 export const projects: Project[] = [
+  {
+    slug: "casa-mirante",
+    title: "Casa Mirante",
+    year: 2024,
+    location: "Garopaba, SC",
+    type: "Residencial",
+    area: 520,
+    summary: "Residência suspensa sobre o mar, entre o vidro e o horizonte.", // PLACEHOLDER
+    cover: "/projetos/casa-mirante/capa.webp",
+    gallery: gallery("casa-mirante"),
+  },
+  {
+    slug: "pavilhao-pomar",
+    title: "Pavilhão Pomar",
+    year: 2023,
+    location: "Holambra, SP",
+    type: "Corporativo",
+    area: 240,
+    summary:
+      "Café-pavilhão de concreto organizado ao redor de uma única árvore.", // PLACEHOLDER
+    cover: "/projetos/pavilhao-pomar/capa.webp",
+    gallery: gallery("pavilhao-pomar"),
+  },
   {
     slug: "casa-horizonte",
     title: "Casa Horizonte",
     year: 2024,
-    location: "São Paulo, SP",
+    location: "Goiânia, GO",
     type: "Residencial",
-    area: 420,
-    summary:
-      "Residência de linhas longas em diálogo com a paisagem.", // PLACEHOLDER
-    cover: null,
-    gallery: [],
+    area: 680,
+    summary: "Residência de linhas longas em diálogo com a paisagem.", // PLACEHOLDER
+    cover: "/projetos/casa-horizonte/capa.webp",
+    gallery: gallery("casa-horizonte"),
   },
   {
-    slug: "pavilhao-aurora",
-    title: "Pavilhão Aurora",
-    year: 2023,
-    location: "Campinas, SP",
-    type: "Corporativo",
-    area: 1180,
-    summary: "Sede corporativa em concreto, luz e silêncio.", // PLACEHOLDER
-    cover: null,
-    gallery: [],
+    slug: "casa-bosque",
+    title: "Casa Bosque",
+    year: 2022,
+    location: "Campos do Jordão, SP",
+    type: "Residencial",
+    area: 180,
+    summary: "Refúgio de madeira que se abre para a mata.", // PLACEHOLDER
+    cover: "/projetos/casa-bosque/capa.webp",
+    gallery: gallery("casa-bosque"),
   },
   {
-    slug: "casa-ribeira",
-    title: "Casa Ribeira",
+    slug: "casa-vertice",
+    title: "Casa Vértice",
     year: 2023,
-    location: "Florianópolis, SC",
+    location: "Ubatuba, SP",
     type: "Residencial",
     area: 310,
-    summary: "Casa de praia entre madeira e mar.", // PLACEHOLDER
-    cover: null,
-    gallery: [],
+    summary: "Casa-frontão em tijolo, geometria pura sob o céu tropical.", // PLACEHOLDER
+    cover: "/projetos/casa-vertice/capa.webp",
+    gallery: gallery("casa-vertice"),
   },
   {
-    slug: "atrio-monte",
-    title: "Átrio Monte",
+    slug: "atelier-norte",
+    title: "Atelier Norte",
     year: 2022,
-    location: "Belo Horizonte, MG",
+    location: "São Paulo, SP",
     type: "Corporativo",
-    area: 860,
-    summary: "Edifício de uso misto com átrio central.", // PLACEHOLDER
-    cover: null,
-    gallery: [],
+    area: 420,
+    summary: "Volume escuro de uso misto na esquina urbana.", // PLACEHOLDER
+    cover: "/projetos/atelier-norte/capa.webp",
+    gallery: gallery("atelier-norte"),
   },
 ];
 
