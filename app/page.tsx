@@ -104,7 +104,6 @@ export default function HomePage() {
                   alt={`${project.title}, ${project.location}`}
                   ratio="4/5"
                   priority={i < 2}
-                  className="transition-transform duration-700 ease-editorial group-hover:scale-[1.01]"
                 />
               </MaskReveal>
               <div className="mt-5 flex items-baseline justify-between">

@@ -56,7 +56,6 @@ export function ProjectsView({ projects }: { projects: Project[] }) {
                   alt={`${project.title}, ${project.location}`}
                   ratio="4/5"
                   priority={i < 3}
-                  className="transition-transform duration-700 ease-editorial group-hover:scale-[1.01]"
                 />
               </MaskReveal>
               <h3 className="mt-5 font-display text-xl leading-none">
