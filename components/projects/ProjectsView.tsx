@@ -25,8 +25,8 @@ export function ProjectsView({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      {/* Filter strip — an element edge on the grid */}
-      <Rule marks />
+      {/* Filter strip */}
+      <Rule />
       <Container className="flex flex-wrap items-center justify-between gap-4 py-4">
         <FilterTabs options={projectTypes} value={filter} onChange={setFilter} />
         <span className="label tabular">
@@ -36,39 +36,41 @@ export function ProjectsView({ projects }: { projects: Project[] }) {
 
       <Rule />
       <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-3">
+        <h2 className="sr-only">Todos os projetos</h2>
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 md:gap-y-24">
           {visible.map((project, i) => (
-            <Link
-              key={project.slug}
-              href={`/projetos/${project.slug}`}
-              className="group block"
-            >
-              <div className="mb-4 flex items-baseline justify-between">
-                <span className="label">
-                  <span className="text-accent">{pad(i + 1)} /</span>
-                  <span className="ml-2">{project.type}</span>
-                </span>
-                <span className="label tabular">{project.year}</span>
-              </div>
-              <MaskReveal>
-                <Figure
-                  src={project.cover}
-                  alt={`${project.title}, ${project.location}`}
-                  ratio="4/5"
-                  priority={i < 3}
-                />
-              </MaskReveal>
-              {/* hairline delimiting the caption, full card width */}
-              <span className="mt-5 block h-px w-full bg-line transition-colors duration-500 ease-editorial group-hover:bg-ink" />
-              <h3 className="knockout w-fit pt-4 font-display text-xl leading-none">
-                {project.title}
-              </h3>
-              <p className="knockout mt-1 w-fit text-sm text-graphite">
-                {project.location}
-              </p>
-            </Link>
+            <li key={project.slug} className={i % 2 === 1 ? "md:mt-16" : ""}>
+              <Link
+                href={`/projetos/${project.slug}`}
+                className="group block"
+              >
+                <div className="mb-4 flex items-baseline justify-between">
+                  <span className="label">
+                    <span className="text-accent">{pad(i + 1)} /</span>
+                    <span className="ml-2">{project.type}</span>
+                  </span>
+                  <span className="label tabular">{project.year}</span>
+                </div>
+                <MaskReveal>
+                  <Figure
+                    src={project.cover}
+                    alt={`${project.title}, ${project.location}`}
+                    ratio="4/5"
+                    priority={i < 3}
+                  />
+                </MaskReveal>
+                {/* hairline delimiting the caption, full card width */}
+                <span className="mt-5 block h-px w-full bg-line transition-colors duration-500 ease-editorial group-hover:bg-ink" />
+                <h3 className="w-fit pt-4 font-display text-xl leading-none">
+                  {project.title}
+                </h3>
+                <p className="mt-1 w-fit text-sm text-graphite">
+                  {project.location}
+                </p>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </Container>
     </>
   );

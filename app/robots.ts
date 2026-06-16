@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-
-const BASE = "https://estudiomonteiro.com"; // PLACEHOLDER — final domain
+import { site } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: `${BASE}/sitemap.xml`,
+    sitemap: `${site.url}/sitemap.xml`,
   };
 }

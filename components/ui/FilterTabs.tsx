@@ -36,7 +36,7 @@ export function FilterTabs<T extends string>({
             aria-selected={active}
             onClick={() => onChange(option)}
             className={cn(
-              "knockout pb-1 text-sm transition-colors duration-300 ease-editorial",
+              "py-3 text-sm transition-colors duration-300 ease-editorial",
               active
                 ? "border-b border-accent text-accent"
                 : "border-b border-transparent text-graphite hover:text-ink",

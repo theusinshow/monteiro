@@ -17,6 +17,9 @@ export function DrawHairline({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
+  // `initial` is constant (never branches on useReducedMotion, which is null on
+  // the server and would otherwise risk a hydration mismatch). Reduced motion
+  // collapses the draw-in to an instant reveal instead.
   return (
     <motion.span
       aria-hidden
@@ -25,10 +28,12 @@ export function DrawHairline({
         strong ? "bg-line-strong" : "bg-line",
         className,
       )}
-      initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
+      initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true, margin: "-8% 0px" }}
-      transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={
+        reduce ? { duration: 0 } : { duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }
+      }
     />
   );
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function ProjetosPage() {
   return (
     <div className="pb-px">
-      <Rule marks />
+      <Rule />
       <Container className="flex items-center justify-between py-3">
         <span className="label">
           <span className="text-accent">00 /</span>
@@ -25,16 +25,14 @@ export default function ProjetosPage() {
       </Container>
 
       <Rule />
-      <Container className="py-16 md:py-24">
-        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-          <div className="col-span-4 md:col-span-6 lg:col-span-6">
-            <h1 className="knockout w-fit max-w-[14ch] font-display text-4xl leading-tight md:text-7xl">
-              Projetos selecionados
-            </h1>
-            <p className="knockout mt-6 w-fit max-w-md text-lg text-graphite">
-              Cada obra é um estudo de proporção, luz e permanência.
-            </p>
-          </div>
+      <Container className="py-20 md:py-28">
+        <div className="max-w-3xl">
+          <h1 className="max-w-[14ch] font-display text-4xl leading-tight md:text-7xl">
+            Projetos selecionados
+          </h1>
+          <p className="mt-6 max-w-md text-lg text-graphite">
+            Cada obra é um estudo de proporção, luz e permanência.
+          </p>
         </div>
       </Container>
 

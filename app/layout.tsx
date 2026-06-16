@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { GridField } from "@/components/ui/GridField";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -21,6 +20,11 @@ const hanken = Hanken_Grotesk({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  // matches --color-paper so mobile browser chrome blends into the dark ground
+  themeColor: "#211e1b",
+};
+
 export const metadata: Metadata = {
   title: {
     default: `${site.fullName} — ${site.tagline}`,
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
   },
   description:
     "Estúdio de arquitetura focado em projetos residenciais de alto padrão e corporativos.",
-  metadataBase: new URL("https://estudiomonteiro.com"),
+  metadataBase: new URL(site.url),
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -45,7 +49,6 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${fraunces.variable} ${hanken.variable}`}>
       <body>
         <SmoothScroll>
-          <GridField />
           <Header />
           <main className="relative z-10">{children}</main>
           <Footer />

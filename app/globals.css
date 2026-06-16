@@ -6,19 +6,23 @@
    Near-monochrome, editorial, architectural. Lines = structure.
    ============================================================ */
 @theme {
-  /* Color — paper & ink, color comes from photography */
-  --color-paper: #f3f1ec;
-  --color-paper-deep: #eceae3;
-  --color-ink: #1a1714;
-  --color-graphite: #6c685f;
-  --color-stone: #9a8c76;
-  --color-line: color-mix(in oklab, var(--color-ink) 14%, transparent);
-  --color-line-strong: color-mix(in oklab, var(--color-ink) 28%, transparent);
+  /* Color — DARK "Drafting" direction (DEC-014). Role-based names persist but
+     the metaphor inverts: paper = the dark drafting board, ink = the light line
+     drawn on it. Chromatic richness still comes from project photography.
+     All OKLCH; neutrals tinted to the brand hue; no pure #000 / #fff. */
+  --color-paper: oklch(0.205 0.009 62); /* dark warm ground (was off-white) */
+  --color-paper-deep: oklch(0.172 0.009 62); /* recessed surface — frames */
+  --color-ink: oklch(0.925 0.013 83); /* light primary text / lines */
+  --color-graphite: oklch(0.66 0.012 75); /* secondary text (AA on ground) */
+  --color-stone: oklch(0.62 0.025 75); /* warm taupe neutral (sparingly) */
+  --color-line: color-mix(in oklab, var(--color-ink) 16%, transparent);
+  --color-line-strong: color-mix(in oklab, var(--color-ink) 30%, transparent);
 
-  /* Secondary accent — editorial brick. Single committed hue, used sparingly:
-     signature italic, wordmark mark, index folios, active state, interaction.
-     Depth tuned (L .47) to clear AA 4.5:1 on paper even at label sizes. */
-  --color-accent: oklch(0.47 0.155 32);
+  /* Secondary accent — editorial brick, reclaimed for the dark ground. Single
+     committed hue, used sparingly: signature italic, wordmark mark, index
+     folios, active state, interaction. Brightened (L .66) so the small folio
+     numerals clear AA 4.5:1 on the dark paper. */
+  --color-accent: oklch(0.66 0.15 40);
 
   /* Typography — display serif + grotesque text (wired in layout.tsx) */
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
@@ -34,9 +38,8 @@
   --container-max: 90rem; /* 1440px */
   --gutter: clamp(1.25rem, 0.5rem + 3vw, 4.5rem);
 
-  /* Persistent grid — single source of truth for the global vertical field */
+  /* Content band width + reusable cell padding (grid is no longer painted) */
   --grid-max: 90rem; /* == --container-max */
-  --grid-cols: 4; /* mobile default; stepped up in @layer base */
   --cell-pad: clamp(1rem, 0.5rem + 1.5vw, 2rem);
 
   /* Motion */
@@ -45,22 +48,7 @@
 
 @layer base {
   :root {
-    color-scheme: light;
-    /* width of one column of the content band (band minus the two gutters).
-       The gutters become the clean outer margins around the grid. */
-    --col: calc(
-      (min(100vw, var(--grid-max)) - 2 * var(--gutter)) / var(--grid-cols)
-    );
-  }
-  @media (min-width: 768px) {
-    :root {
-      --grid-cols: 6;
-    }
-  }
-  @media (min-width: 1024px) {
-    :root {
-      --grid-cols: 8;
-    }
+    color-scheme: dark;
   }
 
   html {
@@ -75,12 +63,6 @@
     font-size: 1rem;
     line-height: 1.5;
     font-feature-settings: "ss01", "cv01";
-    /* subtle paper grain via layered gradients, performance-safe */
-    background-image: radial-gradient(
-      120% 120% at 50% 0%,
-      color-mix(in oklab, var(--color-paper) 92%, white) 0%,
-      var(--color-paper) 60%
-    );
   }
 
   ::selection {
@@ -128,21 +110,7 @@
     border-top: var(--hairline) solid var(--color-line);
   }
 
-  /* Knockout — body copy and labels sit on paper so the persistent vertical
-     grid lines stop behind small text instead of crossing it. Display headings
-     are intentionally left to span the grid. box-decoration-break clones the
-     paper per line-box (inline text); the inline padding + negative margin keep
-     the text's layout position unchanged. */
-  .knockout {
-    background-color: var(--color-paper);
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    padding-inline: 0.3em;
-    margin-inline: -0.3em;
-  }
-
-  /* Eyebrow label — small, tracked, grotesque. inline-block + paper knockout so
-     the grid lines never cross label text. */
+  /* Eyebrow label — small, tracked, grotesque. */
   .label {
     display: inline-block;
     font-family: var(--font-sans);
@@ -151,9 +119,6 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-graphite);
-    background-color: var(--color-paper);
-    padding-inline: 0.3em;
-    margin-inline: -0.3em;
   }
 
   /* Animated hairline underline for links */

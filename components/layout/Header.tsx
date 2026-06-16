@@ -4,8 +4,8 @@ import { Rule } from "@/components/ui/Rule";
 import { nav, site } from "@/lib/site";
 
 /**
- * Minimal editorial header. Its baseline is an element Rule on the grid, with
- * crosshairs at the column intersections; logo and nav align to the band edges.
+ * Minimal editorial header. Its baseline is a horizontal Rule; logo and nav
+ * align to the content band edges.
  */
 export function Header() {
   return (
@@ -13,7 +13,7 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between md:h-20">
         <Link
           href="/"
-          className="knockout font-display text-xl tracking-tight md:text-2xl"
+          className="font-display text-xl tracking-tight md:text-2xl"
           aria-label={`${site.fullName} — início`}
         >
           {site.name}
@@ -26,7 +26,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="knockout link-underline pb-0.5 text-sm text-graphite transition-colors hover:text-ink"
+                  className="link-underline inline-flex items-center py-3 text-sm text-graphite transition-colors hover:text-ink"
                 >
                   {item.label}
                 </Link>
@@ -35,7 +35,7 @@ export function Header() {
           </ul>
         </nav>
       </Container>
-      <Rule marks />
+      <Rule />
     </header>
   );
 }

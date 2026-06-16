@@ -19,7 +19,7 @@ const details: [string, string, string?][] = [
 export default function ContatoPage() {
   return (
     <div className="pb-px">
-      <Rule marks />
+      <Rule />
       <Container className="flex items-center justify-between py-3">
         <span className="label">
           <span className="text-accent">00 /</span>
@@ -29,17 +29,18 @@ export default function ContatoPage() {
       </Container>
 
       <Rule />
-      <Container>
-        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+      <Container className="py-16 md:py-24">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           {/* Left: invitation + contact ficha */}
-          <div className="col-span-4 px-(--cell-pad) py-12 md:col-span-6 md:py-16 lg:col-span-3">
-            <h1 className="knockout w-fit max-w-[12ch] font-display text-4xl leading-tight md:text-6xl">
+          <div>
+            <h1 className="max-w-[12ch] font-display text-4xl leading-tight md:text-6xl">
               Vamos começar.
             </h1>
-            <p className="knockout mt-6 w-fit max-w-sm text-lg text-graphite">
+            <p className="mt-6 max-w-sm text-lg text-graphite">
               Conte sobre o seu projeto. Respondemos pessoalmente.
             </p>
 
+            <h2 className="sr-only">Dados de contato</h2>
             <dl className="mt-12 border-t border-line">
               {details.map(([label, value, href]) => (
                 <div key={label} className="border-b border-line py-5">
@@ -48,12 +49,12 @@ export default function ContatoPage() {
                     {href ? (
                       <a
                         href={href}
-                        className="knockout link-underline text-ink"
+                        className="link-underline text-ink"
                       >
                         {value}
                       </a>
                     ) : (
-                      <span className="knockout text-ink">{value}</span>
+                      <span className="text-ink">{value}</span>
                     )}
                   </dd>
                 </div>
@@ -61,8 +62,9 @@ export default function ContatoPage() {
             </dl>
           </div>
 
-          {/* Right: form, divided from the index by a vertical hairline */}
-          <div className="col-span-4 px-(--cell-pad) py-12 md:col-span-6 md:py-16 lg:col-span-5 lg:border-l lg:border-line">
+          {/* Right: form, separated from the details by a left border on desktop */}
+          <div className="md:border-l md:border-line md:pl-16">
+            <h2 className="sr-only">Formulário de contato</h2>
             <ContactForm />
           </div>
         </div>

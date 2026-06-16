@@ -7,9 +7,9 @@ type ContainerProps = {
 };
 
 /**
- * Centered content band, aligned to the global GridField. Capped at --grid-max
- * and inset by --gutter so its edges land on the grid's outer lines; the gutters
- * are the clean outer margins. The structural side rails now come from GridField.
+ * Centered content band. Capped at --grid-max and inset by --gutter so its edges
+ * are the clean outer margins. Section rules (see Rule) share this band width, so
+ * lines and content end at the same margin.
  */
 export function Container({ as: Tag = "div", children, className }: ContainerProps) {
   return (

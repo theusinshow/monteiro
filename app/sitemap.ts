@@ -1,17 +1,16 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/lib/projects";
-
-const BASE = "https://estudiomonteiro.com"; // PLACEHOLDER — final domain
+import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/projetos", "/estudio", "/contato"].map((path) => ({
-    url: `${BASE}${path}`,
+    url: `${site.url}${path}`,
     changeFrequency: "monthly" as const,
     priority: path === "" ? 1 : 0.8,
   }));
 
   const projectRoutes = projects.map((p) => ({
-    url: `${BASE}/projetos/${p.slug}`,
+    url: `${site.url}/projetos/${p.slug}`,
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));

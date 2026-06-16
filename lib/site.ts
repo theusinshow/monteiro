@@ -7,6 +7,8 @@ export const site = {
   name: "Monteiro",
   fullName: "Estúdio Monteiro",
   tagline: "Arquitetura autoral",
+  /** Canonical production origin — single source for metadata, robots, sitemap. */
+  url: "https://estudiomonteiro.com",
   foundedYear: 2009,
   email: "contato@estudiomonteiro.com",
   whatsapp: "+55 11 99421-0380",
