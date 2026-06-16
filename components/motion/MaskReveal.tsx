@@ -4,8 +4,11 @@ import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 
 /**
- * Reveals its content behind a rising mask (clip-path wipe) with a subtle
- * settle. Used for photography. No-op wrapper when motion is reduced.
+ * Photography entrance: the framed plate settles onto the page — a quiet fade
+ * with a micro-zoom out (no clip-path). The trigger is `amount` (share of the
+ * element visible) instead of a negative root margin, so it can't get stuck
+ * hidden the way the old clip-path wipe could when the observer missed under
+ * smooth scroll. No-op when motion is reduced. (Name kept for import stability.)
  */
 export function MaskReveal({
   children,
@@ -20,15 +23,20 @@ export function MaskReveal({
 
   // `initial` is constant (never branches on useReducedMotion, which is null on
   // the server and would otherwise cause a hydration mismatch). Reduced motion
-  // collapses the wipe to an instant reveal instead.
+  // collapses the settle to an instant reveal.
   return (
     <motion.div
-      className={cn("overflow-hidden", className)}
-      initial={{ clipPath: "inset(100% 0 0 0)" }}
-      whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-      viewport={{ once: true, margin: "-10% 0px" }}
+      className={cn(className)}
+      initial={{ opacity: 0, scale: 1.06 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={
-        reduce ? { duration: 0 } : { duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }
+        reduce
+          ? { duration: 0 }
+          : {
+              opacity: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+              scale: { duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] },
+            }
       }
     >
       {children}
